@@ -16,14 +16,14 @@ namespace :import_csv do
     CSV.foreach(path, headers: true) do |row|
       list << row.to_h
     end
-    puts "インポート処理を開始".red
+    puts "インポート処理を開始".green
     begin
       User.transaction do
         # 例外が発生する可能性のある処理
         User.create!(list)
       end
       # 正常に動作した場合の処理
-      puts "インポート完了!!"
+      puts "インポート完了!!".green
     rescue StandardError => e
       # 例外が発生した場合の処理
       # インポートができなかった場合の例外処理
